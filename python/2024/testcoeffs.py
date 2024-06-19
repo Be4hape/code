@@ -61,8 +61,6 @@ image_file = "AA1_3.jpg"
 
 # 이미지 불러오기
 im = plt.imread(image_file)
-if im.ndim == 3:
-    im = np.mean(im, axis=2)  # 이미지를 그레이스케일로 변환
 height, width = im.shape
 
 # 네 모서리
@@ -90,7 +88,6 @@ print(f'a = {coeffs[0]}, b = {coeffs[1]}, c = {coeffs[2]}')
 fig, ax = plt.subplots(1, 1, figsize=(8, 8))
 ax.imshow(Z, cmap='gray')
 ax.set_title('Illumination Plane')
-plt.show()
 
 # 조명 평면을 원본 이미지에서 빼기
 corrected_im = Z - im
