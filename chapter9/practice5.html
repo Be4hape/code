@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>random color - double click</title>
+
+    <script>
+        function randomColor() {
+            //color = 0~255
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r},${g},${b})`;
+        }
+
+        function mydbclick() {
+            document.body.style.background = randomColor();
+        }
+        window.addEventListener("dblclick", mydbclick);
+    </script>
 </head>
+
 <body>
-    
+    <h3>바탕 아무 곳에나 더블 클릭</h3>
+    <hr>
+    바탕 아무 곳이나 <b>더블클릭</b>하면 배경색이 랜덤하게 변합니다.
 </body>
 </html>
