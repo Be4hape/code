@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제7</title>
+    <script>
+        function checkAnswers() {
+            const problems = document.querySelectorAll(".problem");
+            let correctCount = 0;
+
+            problems.forEach(problem => {
+                const answer = parseInt(problem.dataset.answer);
+                const userAnswer = parseInt(problem.querySelector("input").value);
+
+                // 입력값이 정답과 같은지 비교
+                if (userAnswer === answer) {
+                    problem.style.textDecoration = "none";
+                    correctCount++;
+                } else {
+                    problem.style.textDecoration = "line-through";
+                }
+            });
+            document.getElementById("result").textContent = `맞은 개수: ${correctCount}`;
+        }
+    </script>
+</head>
+<body>
+    <h3>산수 문제를 풀어봅시다</h3>
+    <p>수식을 계산하여 답을 입력하고 채점 버튼을 누르세요.</p>
+    <hr>
+
+    <!-- 문제 영역 -->
+    <div class="problem" data-answer="30">
+        5*6 = <input type="text" />
+    </div>
+    <div class="problem" data-answer="22">
+        7+5*3 = <input type="text" />
+    </div>
+    <div class="problem" data-answer="46">
+        23*2 = <input type="text" />
+    </div>
+    <div class="problem" data-answer="28">
+        35-7 = <input type="text" />
+    </div>
+
+    <!-- 결과 출력 -->
+    <button onclick="checkAnswers()">채점</button>
+    <p id="result"></p>
+</body>
+</html>

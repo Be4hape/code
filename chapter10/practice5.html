@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제5</title>
+    <script>
+        let timeoutId;
+
+        function startClock() {
+            const clockDiv = document.getElementById("clock");
+
+            function updateClock() {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                clockDiv.textContent = `${hours}:${minutes}:${seconds}`;
+
+                timeoutId = setTimeout(updateClock, 1000);
+            }
+            updateClock(); // 첫 실행
+        }
+
+        function stopClock() {
+            clearTimeout(timeoutId);
+        }
+    </script>
+</head>
+<body onload="startClock()">
+    <h3>div태그에 시계 만들기</h3>
+    <hr>
+    <div id="clock"></div>
+    <a href="" onclick="stopClock()">시계정지</a>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제72</title>
+    <script>
+        function generateProblems() {
+            const problemsContainer = document.getElementById("problems");
+            problemsContainer.innerHTML = "";
+
+            const operators = ['+', '-', '*', '/'];
+            operators.forEach(operator => {
+                const num1 = Math.floor(Math.random() * 50) + 1;
+                const num2 = Math.floor(Math.random() * 50) + 1;
+                let answer;
+
+                if (operator === '/') {
+                    answer = parseFloat((num1 / num2).toFixed(2));
+                } else if (operator === '*') {
+                    answer = num1 * num2;
+                } else if (operator === '-') {
+                    answer = num1 - num2;
+                } else {
+                    answer = num1 + num2;
+                }
+
+                const problemDiv = document.createElement("div");
+                problemDiv.classList.add("problem");
+                problemDiv.setAttribute("data-answer", answer);
+                problemDiv.innerHTML = `${num1} ${operator} ${num2} = <input type="text" />`;
+                problemsContainer.appendChild(problemDiv);
+            });
+        }
+
+        function checkAnswers() {
+            const problems = document.querySelectorAll(".problem");
+            let correctCount = 0;
+
+            problems.forEach(problem => {
+                const answer = parseFloat(problem.dataset.answer);
+                const userAnswer = parseFloat(problem.querySelector("input").value);
+
+                if (userAnswer === answer) {
+                    problem.style.textDecoration = "none";
+                    correctCount++;
+                } else {
+                    problem.style.textDecoration = "line-through";
+                }
+            });
+
+            document.getElementById("result").textContent = `맞은 개수: ${correctCount}`;
+        }
+    </script>
+</head>
+<body onload="generateProblems()">
+    <h3>산수 문제를 풀어봅시다</h3>
+    <p>수식을 계산하여 답을 입력하고 채점 버튼을 누르세요.</p>
+    <hr>
+
+    <div id="problems"></div>
+
+    <button onclick="checkAnswers()">채점</button>
+    <button onclick="generateProblems()">다시</button>
+
+    <p id="result"></p>
+</body>
+</html>

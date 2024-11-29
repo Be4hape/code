@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제3</title>
+
+    <script>
+        function openWindow() {
+            const dropdown = document.getElementById("siteOptions");
+            const selectedURL = dropdown.value;
+
+            if (selectedURL) {
+                window.open(selectedURL, "_blank", "left=300, top=300, width=500, height=400");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>옵션 선택 새 창 열기</h3>
+    <hr>
+    <p>아래의 드롭다운에서 사이트를 선택하면, 새 창에서 해당 사이트로 접속됩니다.</p>
+
+    <select id="siteOptions" onchange="openWindow()">
+        <option value="https://www.google.com">Google</option>
+        <option value="https://www.youtube.com">YouTube</option>
+        <option value="https://www.github.com">GitHub</option>
+        <option value="https://www.wikipedia.org">Wikipedia</option>
+    </select>
+</body>
+</html>
